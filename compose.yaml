@@ -1,0 +1,7 @@
+services:
+  sistem-voucher:
+    build: .
+    container_name: sistemvoucher
+    ports:
+      - 8084:8084
+    restart: always
