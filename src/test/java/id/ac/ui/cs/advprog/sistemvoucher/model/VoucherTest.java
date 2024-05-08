@@ -1,39 +1,39 @@
 package id.ac.ui.cs.advprog.sistemvoucher.model;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class VoucherTest {
-    Voucher voucher;
-
-    @BeforeEach
-    void setUp() {
-        this.voucher = new Voucher();
-        this.voucher.setVoucherId("eb558e9f-1c39-460e-8860-71af6af63bd6");
-        this.voucher.setVoucherName("Discount 20%");
-        this.voucher.setDiscountAmount(0.2);
-        this.voucher.setMaxUsage(100);
+    @Test
+    void testCreateInvalidDiscountAmount() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            Voucher voucher = new Voucher(1, "Discount 20%", 500);
+        });
     }
 
     @Test
-    void testGetVoucherId() {
-        assertEquals("eb558e9f-1c39-460e-8860-71af6af63bd6", this.voucher.getVoucherId());
+    void testCreateVoucherUnlimitedQuota() {
+        Voucher voucher = new Voucher(1, "Discount 20%", 20);
+        assertEquals(1, voucher.getVoucherId());
+        assertEquals("Discount 20%", voucher.getVoucherName());
+        assertEquals(20, voucher.getDiscountAmount());
+        assertEquals(Integer.MAX_VALUE, voucher.getMaxUsage());
     }
 
     @Test
-    void testGetVoucherName() {
-        assertEquals("Discount 20%", this.voucher.getVoucherName());
+    void testCreateVoucherLimitedQuota() {
+        Voucher voucher = new Voucher(1, "Discount 20%", 20, 200);
+        assertEquals(1, voucher.getVoucherId());
+        assertEquals("Discount 20%", voucher.getVoucherName());
+        assertEquals(20, voucher.getDiscountAmount());
+        assertEquals(200, voucher.getMaxUsage());
     }
 
     @Test
-    void testGetVoucherDiscountAmount() {
-        assertEquals(0.2, this.voucher.getDiscountAmount());
-    }
-
-    @Test
-    void testGetVoucherMaxUsage() {
-        assertEquals(100, this.voucher.getMaxUsage());
+    void updateNoOfUsedVoucher() {
+        Voucher voucher = new Voucher(1, "Discount 20%", 20, 200);
+        voucher.updateNoOfUsed();
+        assertEquals(1, voucher.getNoOfUsed());
     }
 }
