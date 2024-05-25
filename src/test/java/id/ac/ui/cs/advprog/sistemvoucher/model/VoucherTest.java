@@ -8,7 +8,7 @@ public class VoucherTest {
     @Test
     void testCreateInvalidDiscountAmount() {
         assertThrows(IllegalArgumentException.class, () -> {
-            Voucher voucher = new Voucher(1, "Discount 20%", 500);
+            new Voucher(1, "Discount 20%", 500);
         });
     }
 

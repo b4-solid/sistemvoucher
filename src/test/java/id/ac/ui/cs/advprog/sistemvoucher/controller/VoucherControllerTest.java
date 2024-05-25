@@ -24,6 +24,7 @@ public class VoucherControllerTest {
     @InjectMocks
     private VoucherController voucherController;
 
+    @SuppressWarnings("deprecation")
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.initMocks(this);

@@ -1,7 +1,8 @@
-package id.ac.ui.cs.advprog.sistemvoucher.service;
+package id.ac.ui.cs.advprog.sistemvoucher.service.impl;
 
 import id.ac.ui.cs.advprog.sistemvoucher.model.Voucher;
 import id.ac.ui.cs.advprog.sistemvoucher.repository.VoucherRepository;
+import id.ac.ui.cs.advprog.sistemvoucher.service.VoucherService;
 
 import java.util.List;
 import java.util.Optional;

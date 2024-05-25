@@ -9,6 +9,7 @@ import jakarta.validation.constraints.*;
 @Entity
 @Table(name = "vouchers")
 @Getter
+@Setter
 public class Voucher {
     @Id
     @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
