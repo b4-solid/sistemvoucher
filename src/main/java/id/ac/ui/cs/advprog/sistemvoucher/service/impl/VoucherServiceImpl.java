@@ -1,6 +1,6 @@
 package id.ac.ui.cs.advprog.sistemvoucher.service.impl;
 
-import id.ac.ui.cs.advprog.sistemvoucher.model.Voucher;
+import id.ac.ui.cs.advprog.sistemvoucher.model.VoucherModel;
 import id.ac.ui.cs.advprog.sistemvoucher.repository.VoucherRepository;
 import id.ac.ui.cs.advprog.sistemvoucher.service.VoucherService;
 
@@ -19,24 +19,33 @@ public class VoucherServiceImpl implements VoucherService {
 
     //C(reate)
     @Override
-    public Voucher createVoucher(Voucher voucher) {
+    public VoucherModel createVoucher(VoucherModel voucher) {
+        if (voucher.getDiscountAmount() > 100 || voucher.getDiscountAmount() < 0) {
+            throw new IllegalArgumentException("Discount amount must be between 0 and 100");
+        }
+
         return voucherRepository.save(voucher);
     }
 
     //R(Read)
     @Override
-    public List<Voucher> findAllVoucher() {
+    public List<VoucherModel> findAllVoucher() {
         return voucherRepository.findAll();
     }
 
     @Override
-    public Optional<Voucher> findVoucherById(Long voucherId) {
+    public Optional<VoucherModel> findVoucherById(Long voucherId) {
         return voucherRepository.findById(voucherId);
     }
 
     //U(pdate)
     @Override
-    public Voucher updateVoucher(Voucher voucher) {
+    public VoucherModel updateVoucher(VoucherModel voucher) {
+
+        if (voucher.getDiscountAmount() > 100 || voucher.getDiscountAmount() < 0) {
+            throw new IllegalArgumentException("Discount amount must be between 0 and 100");
+        }
+
         return voucherRepository.save(voucher);
     }
 

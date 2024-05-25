@@ -1,8 +1,8 @@
 package id.ac.ui.cs.advprog.sistemvoucher.repository;
 
-import id.ac.ui.cs.advprog.sistemvoucher.model.Voucher;
+import id.ac.ui.cs.advprog.sistemvoucher.model.VoucherModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface VoucherRepository extends JpaRepository<Voucher, Long> {
+public interface VoucherRepository extends JpaRepository<VoucherModel, Long> {
 
 }

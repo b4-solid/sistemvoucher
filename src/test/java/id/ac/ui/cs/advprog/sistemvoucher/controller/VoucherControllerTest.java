@@ -1,6 +1,6 @@
 package id.ac.ui.cs.advprog.sistemvoucher.controller;
 
-import id.ac.ui.cs.advprog.sistemvoucher.model.Voucher;
+import id.ac.ui.cs.advprog.sistemvoucher.model.VoucherModel;
 import id.ac.ui.cs.advprog.sistemvoucher.service.VoucherService;
 
 import java.util.List;
@@ -32,7 +32,7 @@ public class VoucherControllerTest {
 
     @Test
     public void testCreateVoucher() {
-        Voucher voucher = new Voucher(1L, "Discount 10%", 10);
+        VoucherModel voucher = new VoucherModel(1L, "Discount 10%", 10, null);
         when(voucherService.createVoucher(voucher)).thenReturn(voucher);
 
         ResponseEntity<Object> responseEntity = voucherController.createVoucher(voucher);
@@ -43,9 +43,9 @@ public class VoucherControllerTest {
 
     @Test
     public void testFindAllVoucher() {
-        Voucher voucher1 = new Voucher(1, "Discount 10%", 10);
-        Voucher voucher2 = new Voucher(2, "Discount 20%", 20);
-        List<Voucher> vouchers = List.of(voucher1, voucher2);
+        VoucherModel voucher1 = new VoucherModel(1, "Discount 10%", 10, null);
+        VoucherModel voucher2 = new VoucherModel(2, "Discount 20%", 20, null);
+        List<VoucherModel> vouchers = List.of(voucher1, voucher2);
         when(voucherService.findAllVoucher()).thenReturn(vouchers);
 
         ResponseEntity<Object> responseEntity = voucherController.getAllVoucher();
@@ -57,7 +57,7 @@ public class VoucherControllerTest {
     @Test
     public void testFindVoucherById() {
         long voucherId = 1L;
-        Voucher voucher = new Voucher(voucherId, "Discount 10%", 10);
+        VoucherModel voucher = new VoucherModel(voucherId, "Discount 10%", 10, null);
         when(voucherService.findVoucherById(voucherId)).thenReturn(Optional.of(voucher));
 
         ResponseEntity<Object> responseEntity = voucherController.getVoucherById(voucherId);
@@ -68,10 +68,10 @@ public class VoucherControllerTest {
 
     @Test
     public void testUpdateVoucher() {
-        Voucher voucher = new Voucher(1L, "Test Voucher", 10);
+        VoucherModel voucher = new VoucherModel(1L, "Test Voucher", 10, null);
         when(voucherService.updateVoucher(voucher)).thenReturn(voucher);
 
-        ResponseEntity<Object> responseEntity = voucherController.updateVoucher(voucher);
+        ResponseEntity<Object> responseEntity = voucherController.updateVoucher(1L, voucher);
 
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         assertEquals(voucher, responseEntity.getBody());

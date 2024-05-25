@@ -4,26 +4,20 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class VoucherTest {
-    @Test
-    void testCreateInvalidDiscountAmount() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            new Voucher(1, "Discount 20%", 500);
-        });
-    }
+public class VoucherModelTest {
 
     @Test
     void testCreateVoucherUnlimitedQuota() {
-        Voucher voucher = new Voucher(1, "Discount 20%", 20);
+        VoucherModel voucher = new VoucherModel(1, "Discount 20%", 20, null);
         assertEquals(1, voucher.getVoucherId());
         assertEquals("Discount 20%", voucher.getVoucherName());
         assertEquals(20, voucher.getDiscountAmount());
-        assertEquals(Integer.MAX_VALUE, voucher.getMaxUsage());
+        assertEquals(null, voucher.getMaxUsage());
     }
 
     @Test
     void testCreateVoucherLimitedQuota() {
-        Voucher voucher = new Voucher(1, "Discount 20%", 20, 200);
+        VoucherModel voucher = new VoucherModel(1, "Discount 20%", 20, 200L);
         assertEquals(1, voucher.getVoucherId());
         assertEquals("Discount 20%", voucher.getVoucherName());
         assertEquals(20, voucher.getDiscountAmount());
@@ -32,8 +26,8 @@ public class VoucherTest {
 
     @Test
     void updateNoOfUsedVoucher() {
-        Voucher voucher = new Voucher(1, "Discount 20%", 20, 200);
-        voucher.updateNoOfUsed();
+        VoucherModel voucher = new VoucherModel(1, "Discount 20%", 20, 200L);
+        voucher.setNoOfUsed(voucher.getNoOfUsed() + 1);
         assertEquals(1, voucher.getNoOfUsed());
     }
 }
