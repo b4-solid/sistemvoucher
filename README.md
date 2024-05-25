@@ -12,8 +12,8 @@
 ![Get Voucher](https://github.com/b4-solid/sistemvoucher/assets/83630284/0f4e9a99-a2ab-4559-b861-16a294f1a3a3)
 ![Database List Voucher by ID](https://github.com/b4-solid/sistemvoucher/assets/124948653/ac201245-48fe-473f-8941-308a6f11cb3e)
 
-### `PUT: ../vouchers`
-![Update Voucher](https://github.com/b4-solid/sistemvoucher/assets/83630284/3fe932d5-6083-4eeb-b63b-75ca5bf5a08a)
+### `PUT: ../vouchers/{id}`
+![Update Voucher](https://github.com/b4-solid/sistemvoucher/assets/83630284/6fb8d740-8463-479d-b91f-256447405500)
 ![Database Update Voucher](https://github.com/b4-solid/sistemvoucher/assets/124948653/dd3c32d2-1237-4099-b42d-8c74baeb8787)
 
 ### `DELETE: ../vouchers/{id}`
