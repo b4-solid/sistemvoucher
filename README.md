@@ -20,6 +20,12 @@
 ![Delete Voucher](https://github.com/b4-solid/sistemvoucher/assets/83630284/4142fca7-6e02-4e76-9be5-2fe4a3646ca5)
 ![Database Delete Voucher](https://github.com/b4-solid/sistemvoucher/assets/124948653/70e7bde8-6af3-4d47-a6c5-636dbfb9381d)
 
+
+Implementasi High-Level Networking dilakukan menggunakan REST API. Adapun alasan penggunaan REST API sebagai berikut.
+- **Komunikasi antar microservice**: REST API memungkinkan layanan dalam arsitektur mikroservis untuk berkomunikasi dengan mudah satu sama lain melalui HTTP/HTTPS karena REST API menggunakan standar protokol web yang umum (HTTP) sehingga berbagai layanan yang dikembangkan dengan teknologi dan bahasa pemrograman yang berbeda dapat berinteraksi tanpa masalah.
+- **Sederhana dan fleksibel**: REST API sederhana dan fleksibel untuk menangani berbagai jenis data (seperti JSON, XML), serta mudah untuk dibuat dan dimodifikasi sesuai logika bisnis.
+- **Statelessness**: REST API dirancang untuk menjadi stateless yang berarti setiap permintaan dari klien ke server dapat dibuat secara independen satu sama lain dan mengandung semua informasi yang diperlukan untuk memproses permintaan tersebut. Hal ini dapat mempercepat waktu respons dan mengurangi beban pada server karena server tidak menyimpan state dari klien.
+
 ## Testing
 ![CodeCoverage](https://github.com/b4-solid/sistemvoucher/assets/124948653/71d2ab70-43b9-454f-a9ac-11020bb5e52a)
 
