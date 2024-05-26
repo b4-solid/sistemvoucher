@@ -23,6 +23,10 @@
 ## Testing
 ![CodeCoverage](https://github.com/b4-solid/sistemvoucher/assets/124948653/71d2ab70-43b9-454f-a9ac-11020bb5e52a)
 
+## Code analysis result using PMD
+![Screen Shot 2024-05-26 at 9 36 25 PM](https://github.com/b4-solid/sistemvoucher/assets/124948653/258191b5-3f48-4e2c-8981-12aff5410fde)
+
+
 
 
 
