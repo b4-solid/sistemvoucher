@@ -48,7 +48,13 @@ public class VoucherController {
 
         try {
             voucher.setVoucherId(id);
-            updatedVoucher = voucherService.updateVoucher(voucher);
+            VoucherModel oldVoucher = voucherService.findVoucherById(id).get();
+
+            if (oldVoucher.getMaxUsage() != null && oldVoucher.getMaxUsage() == voucher.getNoOfUsed()) {
+                voucherService.deleteVoucherById(id);
+                return new ResponseEntity<>(HttpStatus.OK);
+            } else
+                updatedVoucher = voucherService.updateVoucher(voucher);
         } catch (IllegalArgumentException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
