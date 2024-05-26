@@ -32,6 +32,15 @@ Implementasi High-Level Networking dilakukan menggunakan REST API. Adapun alasan
 ## Code analysis result using PMD
 ![Screen Shot 2024-05-26 at 9 36 25 PM](https://github.com/b4-solid/sistemvoucher/assets/124948653/258191b5-3f48-4e2c-8981-12aff5410fde)
 
+## Profiling
+- _**CPU time**_
+![Screen Shot 2024-05-26 at 11 50 34 PM](https://github.com/b4-solid/sistemvoucher/assets/124948653/6d2e4407-6ad9-40c5-97d3-247fbe6a70cc)
+- _**Total time**_
+![Screen Shot 2024-05-26 at 11 51 08 PM](https://github.com/b4-solid/sistemvoucher/assets/124948653/bb4b0274-bd6d-4c73-ac4e-916909d492ca)
+
+Saya mensimulasikan proses CRUD sebanyak beberapa kali selama proses profiling menggunakan Intelij Profile dan mendapat hasil bahwa method `findAllVoucher` dan `createVoucher` memiliki CPU time yang lebih lama dibanding method-method lainnya. Sedangkan, untuk total time, method yang memerlukan waktu lebih banyak dibanding yang lainnya adalah `deleteVoucherById`.
+
+
 
 
 
