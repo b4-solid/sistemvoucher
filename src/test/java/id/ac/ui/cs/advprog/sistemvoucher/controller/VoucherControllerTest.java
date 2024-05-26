@@ -42,6 +42,19 @@ public class VoucherControllerTest {
     }
 
     @Test
+    public void testCreateVoucher_Failure() {
+        VoucherModel voucher = new VoucherModel(1L, "Discount 10%", 10, null);
+        String errorMessage = "Failed to create voucher";
+
+        when(voucherService.createVoucher(voucher)).thenThrow(new IllegalArgumentException(errorMessage));
+
+        ResponseEntity<Object> responseEntity = voucherController.createVoucher(voucher);
+
+        assertEquals(HttpStatus.BAD_REQUEST, responseEntity.getStatusCode());
+        assertEquals(errorMessage, responseEntity.getBody());
+    }
+
+    @Test
     public void testFindAllVoucher() {
         VoucherModel voucher1 = new VoucherModel(1, "Discount 10%", 10, null);
         VoucherModel voucher2 = new VoucherModel(2, "Discount 20%", 20, null);
@@ -75,6 +88,19 @@ public class VoucherControllerTest {
 
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         assertEquals(voucher, responseEntity.getBody());
+    }
+
+    @Test
+    public void testUpdateVoucher_Failure() {
+        VoucherModel voucher = new VoucherModel(1L, "Test Voucher", 10, null);
+        String errorMessage = "Failed to update voucher";
+
+        when(voucherService.updateVoucher(voucher)).thenThrow(new IllegalArgumentException(errorMessage));
+
+        ResponseEntity<Object> responseEntity = voucherController.updateVoucher(1L, voucher);
+
+        assertEquals(HttpStatus.BAD_REQUEST, responseEntity.getStatusCode());
+        assertEquals(errorMessage, responseEntity.getBody());
     }
 
     @Test
