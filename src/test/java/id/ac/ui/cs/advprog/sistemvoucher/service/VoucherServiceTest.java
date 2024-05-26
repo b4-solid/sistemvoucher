@@ -42,6 +42,22 @@ public class VoucherServiceTest {
     }
 
     @Test
+    public void testCreateVoucherInvalidDiscountAmount() {
+        VoucherModel voucher = new VoucherModel(1L, "Discount 10%", 150, null);
+        assertThrows(IllegalArgumentException.class, () -> {
+            voucherService.createVoucher(voucher);
+        });
+    }
+
+    @Test
+    public void testCreateVoucherInvalidDiscountAmount2() {
+        VoucherModel voucher = new VoucherModel(1L, "Discount 10%", -1, null);
+        assertThrows(IllegalArgumentException.class, () -> {
+            voucherService.createVoucher(voucher);
+        });
+    }
+
+    @Test
     public void testFindAllVoucher() {
         VoucherModel voucher1 = new VoucherModel(1, "Discount 10%", 10, null);
         VoucherModel voucher2 = new VoucherModel(2, "Discount 20%", 20, null);
@@ -75,6 +91,24 @@ public class VoucherServiceTest {
         VoucherModel updatedVoucher = voucherService.updateVoucher(voucher);
 
         assertEquals(voucher, updatedVoucher);
+    }
+
+    @Test
+    public void testUpdateVoucherInvalidDiscountAmount() {
+        VoucherModel voucher = new VoucherModel(1L, "Test Voucher", 10, null);
+        voucher.setDiscountAmount(150);
+        assertThrows(IllegalArgumentException.class, () -> {
+            voucherService.updateVoucher(voucher);
+        });
+    }
+
+    @Test
+    public void testUpdateVoucherInvalidDiscountAmount2() {
+        VoucherModel voucher = new VoucherModel(1L, "Test Voucher", 10, null);
+        voucher.setDiscountAmount(-10);
+        assertThrows(IllegalArgumentException.class, () -> {
+            voucherService.updateVoucher(voucher);
+        });
     }
 
     @Test
