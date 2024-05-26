@@ -69,6 +69,7 @@ public class VoucherControllerTest {
     @Test
     public void testUpdateVoucher() {
         VoucherModel voucher = new VoucherModel(1L, "Test Voucher", 10, null);
+        when(voucherService.findVoucherById(1L)).thenReturn(Optional.of(voucher));
         when(voucherService.updateVoucher(voucher)).thenReturn(voucher);
 
         ResponseEntity<Object> responseEntity = voucherController.updateVoucher(1L, voucher);
